@@ -1,0 +1,71 @@
+﻿@model SistemaBelleza.Models.producto
+
+@{
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+    ViewBag.Title = "Eliminar Producto";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+<h2 class="text-center my-4 text-primary">
+    <i class="bi bi-trash-fill"></i> Eliminar Producto
+</h2>
+
+<div class="alert alert-danger">
+    ¿Estás seguro que deseas eliminar el siguiente producto?
+</div>
+
+<dl class="row">
+    <dt class="col-sm-3">ID</dt>
+    <dd class="col-sm-9">@Model.id_producto</dd>
+
+    <dt class="col-sm-3">Nombre</dt>
+    <dd class="col-sm-9">@Model.nombre</dd>
+
+    <dt class="col-sm-3">Descripción</dt>
+    <dd class="col-sm-9">@Model.descripcion</dd>
+
+    <dt class="col-sm-3">Precio</dt>
+    <dd class="col-sm-9">@Model.precio.ToString("N2") Bs</dd>
+
+    <dt class="col-sm-3">Stock</dt>
+    <dd class="col-sm-9">@Model.stock</dd>
+
+    <dt class="col-sm-3">Tipo</dt>
+    <dd class="col-sm-9">@Model.tipo_producto</dd>
+
+    <dt class="col-sm-3">Género</dt>
+    <dd class="col-sm-9">@Model.genero</dd>
+
+    <dt class="col-sm-3">Marca</dt>
+    <dd class="col-sm-9">@((Model.marca != null) ? Model.marca.nombre : "Sin marca")</dd>
+
+    <dt class="col-sm-3">Subcategoría</dt>
+    <dd class="col-sm-9">@((Model.subcategoria != null) ? Model.subcategoria.nombre_subcategoria : "Sin subcategoría")</dd>
+
+    <dt class="col-sm-3">Imagen</dt>
+    <dd class="col-sm-9">
+        @if (!string.IsNullOrEmpty(Model.imagen))
+        {
+            <img src="@Model.imagen" alt="Imagen" width="100" height="100" class="rounded shadow-sm" />
+        }
+        else
+        {
+            <span class="text-muted">Sin imagen</span>
+        }
+    </dd>
+</dl>
+
+@using (Html.BeginForm("Eliminar", "Productos", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.id_producto)
+
+    <div class="text-end">
+        <button type="submit" class="btn btn-danger">
+            <i class="bi bi-trash3-fill"></i> Eliminar
+        </button>
+        <a href="@Url.Action("Index", "Productos")" class="btn btn-secondary">Cancelar</a>
+    </div>
+}

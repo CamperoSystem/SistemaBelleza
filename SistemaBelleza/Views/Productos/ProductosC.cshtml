@@ -1,0 +1,95 @@
+﻿@model SistemaBelleza.Models.producto
+
+@{
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+    ViewBag.Title = "Crear Producto";
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    var tipos = new SelectList(new[] {
+        new { Value = "Maquillaje", Text = "Maquillaje" },
+        new { Value = "Perfume", Text = "Perfume" },
+        new { Value = "Cuidado Facial", Text = "Cuidado Facial" },
+        new { Value = "Accesorio", Text = "Accesorio" },
+        new { Value = "Joyería", Text = "Joyería" },
+        new { Value = "Otros", Text = "Otros" }
+    }, "Value", "Text");
+
+    var generos = new SelectList(new[] {
+        new { Value = "mujer", Text = "Mujer" },
+        new { Value = "hombre", Text = "Hombre" },
+        new { Value = "unisex", Text = "Unisex" },
+        new { Value = "niños", Text = "Niños" }
+    }, "Value", "Text");
+}
+
+<h2 class="text-center text-primary mb-4"><i class="bi bi-plus-circle"></i> Nuevo Producto</h2>
+
+<div class="container">
+    @using (Html.BeginForm("Crear", "Productos", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.nombre)
+            @Html.TextBoxFor(m => m.nombre, new { @class = "form-control", required = "required", placeholder = "Nombre del producto" })
+            @Html.ValidationMessageFor(m => m.nombre, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.descripcion)
+            @Html.TextAreaFor(m => m.descripcion, new { @class = "form-control", rows = 3, required = "required", placeholder = "Descripción del producto" })
+            @Html.ValidationMessageFor(m => m.descripcion, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.precio)
+            @Html.TextBoxFor(m => m.precio, new { @class = "form-control", type = "number", step = "0.01", required = "required", placeholder = "Precio en Bs." })
+            @Html.ValidationMessageFor(m => m.precio, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.stock)
+            @Html.TextBoxFor(m => m.stock, new { @class = "form-control", type = "number", required = "required", placeholder = "Cantidad en stock" })
+            @Html.ValidationMessageFor(m => m.stock, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.imagen)
+            @Html.TextBoxFor(m => m.imagen, new { @class = "form-control", maxlength = "255", placeholder = "URL o nombre de la imagen" })
+            @Html.ValidationMessageFor(m => m.imagen, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            @Html.Label("Subcategoría")
+            @Html.DropDownList("id_subcategoria", null, "-- Seleccione --", new { @class = "form-control", required = "required" })
+            @Html.ValidationMessage("id_subcategoria", "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            @Html.Label("Marca")
+            @Html.DropDownList("id_marca", null, "-- Seleccione --", new { @class = "form-control", required = "required" })
+            @Html.ValidationMessage("id_marca", "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.tipo_producto)
+            @Html.DropDownListFor(m => m.tipo_producto, tipos, "-- Seleccione tipo --", new { @class = "form-control", required = "required" })
+            @Html.ValidationMessageFor(m => m.tipo_producto, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.genero)
+            @Html.DropDownListFor(m => m.genero, generos, "-- Seleccione género --", new { @class = "form-control", required = "required" })
+            @Html.ValidationMessageFor(m => m.genero, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="text-end">
+            <button type="submit" class="btn btn-success">
+                <i class="bi bi-check-circle"></i> Guardar
+            </button>
+            <a href="@Url.Action("Index", "Productos")" class="btn btn-secondary ms-2">Cancelar</a>
+        </div>
+    }
+</div>

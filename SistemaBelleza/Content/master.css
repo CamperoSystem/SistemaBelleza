@@ -1,0 +1,131 @@
+﻿/* --- GENERAL --- */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    overflow: hidden;
+}
+
+/* --- BOTÓN MENÚ --- */
+#toggle-btn {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 2000;
+    font-size: 20px;
+    background-color: #004085;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+    #toggle-btn:hover {
+        background-color: #003366;
+    }
+
+/* --- SIDEBAR --- */
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 240px;
+    height: 100vh;
+    background-color: #004085;
+    padding-top: 180px; /* Aumentado para que los enlaces no se oculten */
+    overflow-y: auto;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+/* --- ENCABEZADO SIDEBAR --- */
+.sidebar-header {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 240px;
+    padding: 20px 10px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #004085;
+    color: white;
+    font-size: 24px;
+    z-index: 1500;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- ENLACES DEL MENÚ --- */
+#sidebar a {
+    display: block;
+    padding: 14px 20px;
+    text-decoration: none;
+    color: white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.3s;
+    font-size: 16px;
+}
+
+    #sidebar a:hover {
+        background-color: #0056b3;
+    }
+
+/* --- HEADER SUPERIOR --- */
+#header {
+    margin-left: 240px;
+    background-color: #004085;
+    color: white;
+    padding: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    border-bottom: 1px solid #002753;
+    text-align: center;
+    position: relative;
+    z-index: 900;
+    transition: margin-left 0.3s ease;
+}
+
+/* --- CONTENIDO PRINCIPAL --- */
+#main {
+    margin-left: 240px;
+    padding: 20px;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+    transition: margin-left 0.3s ease;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    #header, #main {
+        margin-left: 0;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-top: 60px;
+    }
+
+    .sidebar-header {
+        font-size: 18px;
+    }
+
+    #sidebar {
+        padding-top: 140px;
+    }
+}
+
+/* --- SIDEBAR OCULTO --- */
+#sidebar.hidden {
+    transform: translateX(-240px);
+}
+
+#main.expanded {
+    margin-left: 0;
+}
+
+#header.expanded {
+    margin-left: 0;
+}

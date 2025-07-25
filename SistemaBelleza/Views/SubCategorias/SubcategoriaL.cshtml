@@ -1,0 +1,59 @@
+﻿@model IEnumerable<SistemaBelleza.Models.subcategoria>
+
+@{
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+    ViewBag.Title = "Subcategorías";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<h2 class="text-center my-4 text-primary">
+    <i class="bi bi-bookmarks-fill"></i> Gestión de Subcategorías
+</h2>
+
+<div class="text-end mb-3">
+    <a href="@Url.Action("Crear", "SubCategorias")" class="btn btn-success">
+        <i class="bi bi-plus-circle"></i> Nueva Subcategoría
+    </a>
+</div>
+
+<table class="table table-bordered table-hover align-middle shadow-sm">
+    <thead class="table-primary text-center">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Categoría</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (!Model.Any())
+        {
+            <tr>
+                <td colspan="5" class="text-center text-muted">No hay subcategorías registradas.</td>
+            </tr>
+        }
+        else
+        {
+            foreach (var sub in Model)
+            {
+                <tr>
+                    <td>@sub.id_subcategoria</td>
+                    <td>@sub.nombre_subcategoria</td>
+                    <td>@sub.descripcion</td>
+                    <td>@(sub.categoria != null ? sub.categoria.nombre_categoria : "Sin categoría")</td>
+                    <td class="text-center">
+                        <a href="@Url.Action("Editar", "SubCategorias", new { id = sub.id_subcategoria })" class="btn btn-sm btn-warning me-1">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                        <a href="@Url.Action("Eliminar", "SubCategorias", new { id = sub.id_subcategoria })" class="btn btn-sm btn-danger">
+                            <i class="bi bi-trash3-fill"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

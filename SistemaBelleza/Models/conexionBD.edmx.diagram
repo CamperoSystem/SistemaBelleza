@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7d78f18fe1f04361a9aeaffc7ece3af1" Name="Diagram1" ShowGrid="true" DisplayType="true">
+        <EntityTypeShape EntityType="tienda_bellezaModel.carrito" Width="1.5" PointX="5.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="tienda_bellezaModel.carrito_detalles" Width="1.5" PointX="7.5" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tienda_bellezaModel.categoria" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="tienda_bellezaModel.consultora" Width="1.5" PointX="5.25" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="tienda_bellezaModel.detalle_ordenes" Width="1.5" PointX="7.5" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tienda_bellezaModel.direccione" Width="1.5" PointX="3" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="tienda_bellezaModel.envio" Width="1.5" PointX="7.5" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="tienda_bellezaModel.marca" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="tienda_bellezaModel.ordene" Width="1.5" PointX="5.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="tienda_bellezaModel.producto" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="tienda_bellezaModel.productos_promocion" Width="1.5" PointX="7.5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="tienda_bellezaModel.promocione" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tienda_bellezaModel.subcategoria" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="tienda_bellezaModel.usuario" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <AssociationConnector Association="tienda_bellezaModel.FK_carrito_detalles_carrito" ManuallyRouted="false" />
+        <AssociationConnector Association="tienda_bellezaModel.FK_carrito_usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="tienda_bellezaModel.FK_carrito_detalles_productos" ManuallyRouted="false" />
+        <AssociationConnector Association="tienda_bellezaModel.FK_subcategorias_categorias" ManuallyRouted="false" />
+        <AssociationConnector Association="tienda_bellezaModel.FK_consultoras_usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="tienda_bellezaModel.FK_detalle_ordenes_ordenes" ManuallyRouted="false" />
+        <AssociationConnector Association="tienda_bellezaModel.FK_detalle_ordenes_productos" ManuallyRouted="false" />
+        <AssociationConnector Association="tienda_bellezaModel.FK_direcciones_usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="tienda_bellezaModel.FK_ordenes_direcciones" ManuallyRouted="false" />
+        <AssociationConnector Association="tienda_bellezaModel.FK_envios_ordenes" ManuallyRouted="false" />
+        <AssociationConnector Association="tienda_bellezaModel.FK_productos_marcas" ManuallyRouted="false" />
+        <AssociationConnector Association="tienda_bellezaModel.FK_ordenes_usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="tienda_bellezaModel.FK_productos_promocion_productos" ManuallyRouted="false" />
+        <AssociationConnector Association="tienda_bellezaModel.FK_productos_subcategorias" ManuallyRouted="false" />
+        <AssociationConnector Association="tienda_bellezaModel.FK_productos_promocion_promociones" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
