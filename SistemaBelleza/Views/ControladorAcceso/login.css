@@ -1,0 +1,35 @@
+﻿/* Asegurar que la fila ocupe toda la altura */
+.row.h-100 {
+    display: flex;
+    align-items: stretch; /* Las columnas se estiran a la misma altura */
+}
+
+/* Ajustes para la imagen */
+.login-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.5rem; /* Opcional: mismo radio que la card */
+}
+
+    .login-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+/* Overlay de texto */
+.overlay-text {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    color: white;
+    z-index: 2;
+}
+
+    .overlay-text h3 {
+        font-size: 1.8rem;
+    }
+
+    .overlay-text p {
+        font-size: 1rem;
+    }
